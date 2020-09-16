@@ -1155,11 +1155,13 @@ static inline unsigned init(void) {
     return arena;
 }
 
+/*
 // trigger early initialization to set up pthread_atfork and protect state as soon as possible
 COLD __attribute__((constructor(101))) static void trigger_early_init(void) {
     // avoid calling init directly to skip it if this isn't the malloc implementation
     h_free(h_malloc(16));
 }
+*/
 
 // Returns 0 on overflow.
 static size_t get_large_size_class(size_t size) {
