@@ -1074,6 +1074,12 @@ COLD static void handle_bugs(void) {
     if (strcmp(audio_service, path) == 0) {
         ro.slot_randomize = false;
     }
+
+    // Workaround adb reauth issue
+    const char adbd_service[] = "/system/apex/com.android.adbd/bin/adbd";
+    if (strcmp(adbd_service, path) == 0) {
+        ro.zero_on_free = false;
+    }
 }
 
 COLD static void init_slow_path(void) {
